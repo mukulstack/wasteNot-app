@@ -1,7 +1,0 @@
-Members:
-mark@gmail.com - Mark@12345
-bob@gmail.com - Bob@12345
-taro@gmail.com - Taro@12345
-
-Admins:
-wade@gmail.com - Wade@12345
