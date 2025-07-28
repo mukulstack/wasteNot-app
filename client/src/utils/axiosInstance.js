@@ -14,14 +14,14 @@ const axiosInstance = axios.create({
 // Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("token"); 
+    const accessToken = localStorage.getItem("token");
     if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`; 
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
   (error) => {
-    return Promise.reject(error); 
+    return Promise.reject(error);
   }
 );
 
@@ -34,8 +34,8 @@ axiosInstance.interceptors.response.use(
     // Handle common errors globally
     if (error.response) {
       if (error.response.status === 401) {
-        // Redirect to login page
-        window.location.href = "/login"; 
+        // Instead of redirecting, reject the error and let the component handle it
+        return Promise.reject(new Error("Invalid email or password"));
       } else if (error.response.status === 500) {
         console.error("Server error. Please try again later.");
       }
